@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Preact Test</title>
+  <style>
+    body{background:#080814;color:#fff;font-family:system-ui;margin:0;display:flex;align-items:center;justify-content:center;height:100vh}
+    button{padding:12px 24px;background:#5050ff;border:none;border-radius:12px;color:#fff;font-size:16px;cursor:pointer;margin-top:16px}
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+  import { h, render, useState } from 'https://esm.sh/preact@10/compat';
+  import htm from 'https://esm.sh/htm@3';
+  const html = htm.bind(h);
+
+  function App() {
+    const [count, setCount] = useState(0);
+    return html`
+      <div style="text-align:center;padding:30px;background:rgba(255,255,255,0.08);border-radius:20px;max-width:300px">
+        <div style="font-size:48px">🇫🇷</div>
+        <h1 style="margin:16px 0 8px">Fransızca Öğren</h1>
+        <p style="color:#6060a0">Preact çalışıyor! Tıklama: ${count}</p>
+        <button onClick=${() => setCount(c => c+1)}>Test Et (${count})</button>
+      </div>
+    `;
+  }
+
+  render(html`<${App}/>`, document.getElementById('app'));
+</script>
+</body>
+</html>
